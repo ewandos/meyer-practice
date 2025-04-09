@@ -67,17 +67,28 @@
     <div class="numbers" id="numberContainer"></div>
     <button onclick="rollNumbers()">Neue Abfolge</button>
     <script>
-        function getRandomNumber() {
-            return Math.floor(Math.random() * 8) + 1;
+        function getRandomNumber(existingNumbers, lastNumber) {
+            let number;
+            let count;
+            do {
+                number = Math.floor(Math.random() * 8) + 1;
+                count = existingNumbers.filter(n => n === number).length;
+            } while (count >= 2 || number === lastNumber);
+            return number;
         }
 
         function rollNumbers() {
             const container = document.getElementById('numberContainer');
             container.innerHTML = '';
+            const existingNumbers = [];
+            let lastNumber = null;
             for (let i = 0; i < 4; i++) {
                 const number = document.createElement('div');
                 number.className = 'number';
-                number.textContent = getRandomNumber();
+                const randomNumber = getRandomNumber(existingNumbers, lastNumber);
+                number.textContent = randomNumber;
+                existingNumbers.push(randomNumber);
+                lastNumber = randomNumber;
                 container.appendChild(number);
             }
         }
