@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Number Roller</title>
+    <title>Meyer Practice</title>
     <style>
         body {
             margin: 0;
@@ -14,11 +14,17 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
+            height: 100%;
+            background-color: #ECECDD;
+            background-image: url('background.jpg');
+            background-attachment: fixed;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
         .numbers {
+            margin-top: 2em;
             display: flex;
             gap: 1rem;
             margin-bottom: 2rem;
@@ -31,7 +37,7 @@
             background: #ffffff;
             padding: 1rem 2rem;
             border-radius: 1rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border: 3px solid darkgray;
             min-width: 4rem;
             text-align: center;
         }
@@ -41,28 +47,18 @@
             padding: 1rem 2rem;
             border: none;
             border-radius: 1rem;
-            background-color: #007bff;
+            background-color: #9f4545;
             color: white;
             cursor: pointer;
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #802222;
         }
 
         @media (max-width: 600px) {
             .numbers {
                 flex-direction: column;
-            }
-
-            .number {
-                font-size: 3rem;
-                padding: 1rem;
-            }
-
-            button {
-                font-size: 1.5rem;
-                padding: 0.75rem 1.5rem;
             }
         }
     </style>
@@ -70,8 +66,7 @@
 
 <body>
     <div class="numbers" id="numberContainer"></div>
-    <button onclick="rollNumbers()">Roll Numbers</button>
-
+    <button onclick="rollNumbers()">Neue Abfolge</button>
     <script>
         function getRandomNumber() {
             return Math.floor(Math.random() * 8) + 1;
